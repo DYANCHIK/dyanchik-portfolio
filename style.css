@@ -1489,7 +1489,6 @@ MOBILE LAYOUT — единый блок
   /* Текст и изображение на одном уровне */
 
   .hero-grid {
-    display: grid !important;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
     align-items: center !important;
     gap: 10px !important;
