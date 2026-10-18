@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DYANCHIK — 3D designer portfolio</title>
+  <link rel="icon" type="image/png" href="images/Logo.png">
+  <!-- Стили вынесены в отдельный файл для удобного редактирования дизайна. -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header" id="top">
+      <span class="brand-mark" aria-hidden="true">
+  <img src="images/logo.png" alt="">
+</span>
+    <span><span class="brand-name" data-editable="true">DYANCHIK</span>
+    <span class="brand-sub" data-editable="true" style="display:block">3D designer portfolio</span>
+  </span>
+  </a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">☰</button>
+  <nav class="nav" id="nav" aria-label="Главная навигация">
+    <a class="active" href="#top">Главная</a>
+    <a href="#showreels">Шоурилы</a>
+    <a href="#portfolio">Портфолио</a>
+    <a href="#about">Обо мне</a>
+    <a href="#services">Услуги</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+   <a href="https://t.me/dyanchik_n"
+               target="_blank" rel="noopener noreferrer"
+               class="social-link telegram" aria-label="Telegram"
+               title="Telegram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M21.5 3.5 18.3 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.6.6-1.2.6l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L5.5 13.6.6 12.1c-1.1-.3-1.1-1 .2-1.5L19.8 3c.9-.3 1.7.2 1.7.5Z"/>
+                </svg>
+            </a>
+
+            <a href="https://www.tiktok.com/@dyanchik_n"
+               target="_blank" rel="noopener noreferrer"
+               class="social-link tiktok" aria-label="TikTok"
+               title="TikTok">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19.6 6.3a6.4 6.4 0 0 1-3.8-1.3V15a6.2 6.2 0 1 1-6.2-6.2c.4 0 .8 0 1.2.1v3.5a2.8 2.8 0 1 0 1.6 2.6V2h3.4c.2 2.4 1.8 4.2 4.2 4.5v3.4a9.7 9.7 0 0 1-4.2-1.2"/>
+                </svg>
+            </a>
+
+            <a href="https://vk.com/alonenikitoska"
+               target="_blank" rel="noopener noreferrer"
+               class="social-link vk" aria-label="VK"
+               title="VK">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 7h4c.3 3.8 1.8 5.4 3 5.8V7h3.8v3.3c1.3-.2 2.6-1.7 3.1-3.3H21c-.4 2.1-2.2 4-3.4 4.8 1.2.7 3.3 2.4 4 5.2h-4.4c-.6-1.7-1.9-3-3.4-3.3V17H12C6.5 17 3.1 13.2 3 7Z"/>
+                </svg>
+            </a>
+
+            <a href="https://max.ru/u/f9LHodD0cOJGkJtUxGqTu16d-jO1-SUYrWo7AyblxqcBwG9yn66MQchOFgA"
+               target="_blank" rel="noopener noreferrer"
+               class="social-link max" aria-label="MAX"
+               title="MAX">             
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720">
+  <path fill="#0a0b0b" d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/>
+</svg>
+            </a>
+
+        </nav>
+</header>
+
+
+<!-- описание справа -->
+<main>
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow" data-editable="true">3D artist / visual designer</div>
+      <h1 id="heroTitle" data-editable="true">3D модели<br>и текстуры</h1>
+      <p data-editable="true">краткое описание портфолио</p>
+      <a class="primary-btn" href="#portfolio">Смотреть работы <span>→</span></a>
+      <div class="stats">
+        <div class="stat"><strong data-editable="true">200+</strong><small data-editable="true">3D моделей<br>в портфолио</small></div>
+        <div class="stat"><strong data-editable="true">3 года</strong><small data-editable="true">в 3D дизайне</small></div>
+        <div class="stat"><strong data-editable="true">100</strong><small data-editable="true">довольных<br>клиентов</small></div>
+      </div>
+    </div>
+
+    <div class="art-stage" aria-label="Декоративная 3D-сцена">
+      <div class="ribbon r1"></div><div class="ribbon r2"></div>
+      <div class="browser-card photo-frame">
+        <div class="browser-top"><span class="browser-label" data-editable="true">3D portfolio</span><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+        <!-- Замените .portrait-photo на своё фото в CSS или задайте background-image. -->
+        <div class="portrait-photo" role="img" aria-label="Место для фотографии"></div>
+        <div class="browser-bottom"><span style="color:#e97ca4">♥</span></div>
+      </div>
+      <div class="heart-glass" aria-hidden="true"></div>
+      <div class="star-ball" aria-hidden="true"></div>
+      
+<!-- Твоя фотография вместо CSS-персонажа -->
+<div class="model-card">
+  <div class="model-halo"></div>
+  <img
+    class="model-photo"
+    src="images/my-photo.png"
+    alt="Моя фотография"
+  >
+</div>
+
+      <div class="gem" aria-hidden="true">♥</div>
+      <button class="like-bubble" data-action="like"><b>♥</b><span data-editable="true">Like<br>my work?</span></button>
+    </div>
+
+    <aside class="side-panel">
+      <a class="project-link" href="#portfolio"><div class="project-thumb">💎</div><span class="project-text" data-editable="true">3D моделирование<br>и текстуры</span><span class="project-arrow">→</span></a>
+      <ul class="software"><li data-editable="true">Blender 4.0</li><li data-editable="true">Substance Painter</li><li data-editable="true">Cycles / Eevee</li></ul>
+    </aside>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div class="about-copy"><div class="eyebrow">A little about me</div><h2 data-editable="true">Создаю миры,<br>в которые хочется попасть</h2><p data-editable="true">Я 3D-дизайнер, работаю на стыке эстетики, технологий и визуального сторителлинга. Помогаю брендам превращать идеи в объёмные образы — от первого скетча до финального рендера.</p><a class="primary-btn" href="#contacts">Обсудить проект <span>→</span></a></div>
+  <div class="about-visual" aria-hidden="true">✿</div>
+</section>
+
+<section class="section" id="services">
+  <div class="section-heading"><h2 data-editable="true">Что я делаю</h2><p data-editable="true">От отдельного 3D-объекта до цельной визуальной системы для бренда.</p></div>
+  <div class="services-grid">
+    <article class="service"><span class="num">01 / MODELING</span><h3 data-editable="true">3D-моделирование</h3><p data-editable="true">Создание объектов, персонажей и продуктовых моделей с вниманием к силуэту и деталям.</p></article>
+    <article class="service"><span class="num">02 / MATERIALS</span><h3 data-editable="true">Материалы и текстуры</h3><p data-editable="true">Стекло, металл, пластик, ткань и кастомные шейдеры с выразительными поверхностями.</p></article>
+    <article class="service"><span class="num">03 / CGI</span><h3 data-editable="true">Рендер и визуализация</h3><p data-editable="true">Коммерческие рендеры, key visual и визуальные концепции для digital-кампаний.</p></article>
+  </div>
+</section>
+
+<section class="section showreels" id="showreels">
+  <div class="section-heading">
+    <h2 data-editable="true">Showreels / motion studies</h2>
+  </div>
+  <div class="showreel-grid">
+    <article class="showreel-card" style="--card-index:0">
+      <div class="showreel-media media-one">
+       <video src="videos/showreel-01.mp4" autoplay muted loop playsinline controls></video> 
+      </div>
+      <div class="showreel-meta"><div><small>SHOWREEL 01</small><h3 data-editable="true">Динамичные 3D-сцены, визуальные эффекты и motion-дизайн, где движение становится частью идеи.</h3></div>
+        </div>
+    </article>
+    <article class="showreel-card" style="--card-index:1">
+      <div class="showreel-media media-two">
+               <video src="videos/showreel-02.mp4" autoplay muted loop playsinline controls></video> 
+      </div>
+      <div class="showreel-meta"><div><small>SHOWREEL 02</small><h3 data-editable="true">Стилизованные 3D-персонажи с характером, выразительной формой и собственной визуальной эстетикой.</h3></div></div>
+    </article>
+    <article class="showreel-card" style="--card-index:2">
+      <div class="showreel-media media-three">
+               <video src="videos/showreel-02.mp4" autoplay muted loop playsinline controls></video> 
+      </div>
+      <div class="showreel-meta"><div><small>SHOWREEL 03</small><h3 data-editable="true">Визуальные системы и концепции, превращающие идеи бренда в цельный и узнаваемый образ.</h3></div></div>
+    </article>
+    <article class="showreel-card" style="--card-index:3">
+      <div class="showreel-media media-four">
+               <video src="videos/showreel-02.mp4" autoplay muted loop playsinline controls></video> 
+      </div>
+      <div class="showreel-meta"><div><small>SHOWREEL 04</small><h3 data-editable="true">Детализированные цифровые миры, атмосфера и VFX, создающие ощущение глубины и присутствия.</h3></div></div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="portfolio">
+   <!-- КАРУЕСЛЬ 1 --> 
+<div
+  class="slider slider-right"
+  reverse="true"
+  style="--width: 400px;
+    --height: 400px;
+    --quantity: 9;"
+>
+  <div class="list">
+    <div class="item" style="--position: 1">
+       <div class="card">
+       <img src="images/Photo 1.png" alt="Фото 1">
+       <div class="card-text">
+          <p>карточка 1</p>
+          <p>название</p>
+         </div>
+    </div>
+  </div>
+    <div class="item" style="--position: 2">
+      <div class="card">
+       <img src="images/Photo 2.png" alt="Фото 2">
+       <div class="card-text">
+          <p>карточка 1</p>
+          <p>название</p>
+         </div>
+    </div>
+    </div>
+    <div class="item" style="--position: 3">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 3</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 4">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 4</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 5">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 5</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 6">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 6</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 7">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 7</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 8">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 8</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 9">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 9</p>
+        <p>название</p>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- КАРУЕСЛЬ 2 --> 
+<div
+  class="slider slider-left"
+  style="--width: 400px;
+    --height: 400px;
+    --quantity: 9;"
+>
+  <div class="list">
+    <div class="item" style="--position: 1">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 1</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 2">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 2</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 3">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 3</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 4">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 4</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 5">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 5</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 6">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 6</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 7">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 7</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 8">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 8</p>
+        <p>название</p>
+      </div>
+    </div>
+    <div class="item" style="--position: 9">
+      <div
+        class="card"
+        style="background: linear-gradient(to right, #f5a4c2, #df719b)"
+      >
+        <p>карточка 9</p>
+        <p>название</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="section contact" id="contacts">
+  <div><div class="eyebrow">Let's make something lovely</div>
+  <h2 data-editable="true">Давайте поработаем?</h2>
+  <p data-editable="true">Расскажите немного о вашем проекте.</p>
+  <p>✉ <a href="onlydamnnikitina@gmail.com">onlydamnnikitina@gmail.com</a></p></div>
+  <form class="contact-form" id="contactForm"><input name="name" placeholder="Как к вам обращаться?" required aria-label="Ваше имя"><input name="email" type="email" placeholder="Ваш email" required aria-label="Ваш email"><textarea name="message" placeholder="Расскажите о проекте..." required aria-label="Сообщение"></textarea>
+    <button class="primary-btn" type="submit">Подготовить письмо </button><small style="color:#d4bdc5">Форма откроет почтовое приложение с заполненным черновиком.</small></form>
+</section>
+</main>
+<footer class="footer"><span>© <span id="year"></span> DYANCHIK </span>
+  <span data-editable="true">Made by myself</span><a href="#top">Наверх ↑</a></footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Логика интерактивных элементов находится в отдельном файле. -->
+  <script src="script.js"></script>
+</body>
+</html>
