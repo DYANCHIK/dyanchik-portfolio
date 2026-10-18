@@ -91,8 +91,8 @@ button:focus-visible,a:focus-visible,[contenteditable="true"]:focus-visible {
   color:#351a23;
 }
 .brand-mark img {
-  width: 90px;
-  height: 90px;
+  width: 75px;
+  height: 75px;
   object-fit: contain;
   display: block;
 }
