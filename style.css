@@ -499,7 +499,7 @@ h1 {
   position:absolute;
   width:92%;
   height:92%;
-  border-radius:48% 52% 44% 56%;
+  border-radius:48%;
   background:linear-gradient(145deg,#ffe6ed,#f3a4c4 65%,#ffe4ee);
   box-shadow:inset 10px 10px 30px #fff9,0 25px 40px #d9779d25;
   transform:rotate(-8deg);
@@ -584,12 +584,7 @@ h1 {
   vertical-align:middle;
   margin-right:8px;
 }
-.side-panel {
-  position:relative;
-  z-index:3;
-  align-self:center;
-  margin-top:10px;
-}
+
 .project-link {
   display:flex;
   align-items:center;
@@ -1442,9 +1437,9 @@ body.edit-mode [data-editable="true"] {
 
   clip-path: inset(0 0 0 100% round 24px);
   opacity: 0;
-  animation: photoSlideIn 1.05s cubic-bezier(.18,.72,.2,1)
+  animation: photoSlideIn 1s cubic-bezier(.18,.72,.2,1)
 
-             1.15s forwards;
+             0.6s forwards;
 }
 /* На телефонах сохраняем аккуратное кадрирование */
 
@@ -1533,6 +1528,7 @@ MOBILE LAYOUT — единый блок
     min-width: 0 !important;
     height: clamp(220px, 65vw, 330px) !important;
     margin: 0 !important;
+    overflow: hidden;
   }
   .model-card {
     position: absolute;
@@ -1676,7 +1672,7 @@ MOBILE LAYOUT — единый блок
   height: var(--height);
   position: absolute;
   left: 100%;
-  animation: autoRun 20s linear infinite;
+  animation: autoRun 10s linear infinite;
   transition: filter 0.5s;
   animation-delay: calc(
 
