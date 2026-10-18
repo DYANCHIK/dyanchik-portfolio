@@ -1533,7 +1533,6 @@ MOBILE LAYOUT — единый блок
     min-width: 0 !important;
     height: clamp(220px, 65vw, 330px) !important;
     margin: 0 !important;
-    overflow: hidden;
   }
   .model-card {
     position: absolute;
