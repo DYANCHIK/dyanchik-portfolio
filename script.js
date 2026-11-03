@@ -1,130 +1,318 @@
-/* =========================================================
-   ИНТЕРАКТИВНОСТЬ
-   1) Навигация и мобильное меню
-   2) Переключение декоративных слайдов
-   3) Карточки проектов, like, соцсети
-   4) Режим редактирования текста на странице
-   5) Контактная форма — собирает mailto-черновик
-   ========================================================= */
-const $ = (selector, root=document) => root.querySelector(selector);
-const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
-const toast = (message) => {
-  const node = $('#toast'); node.textContent = message; node.classList.add('show');
-  clearTimeout(window.__toastTimer); window.__toastTimer = setTimeout(()=>node.classList.remove('show'), 2600);
+/* ══════════════════════════════════════════════════════════════════
+   SCRIPT.JS — вся интерактивность
+   ══════════════════════════════════════════════════════════════════
+   Что редактировать:
+     → CONFIG ниже — портфолио, email, скорость карусели
+   Остальной код (обработчики, меню) трогать не нужно.
+   ══════════════════════════════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════════════════════════════════
+   ▓▓▓  ГЛАВНЫЕ НАСТРОЙКИ  ▓▓▓
+   Меняйте только значения после двоеточия.
+   ══════════════════════════════════════════════════════════════════ */
+const CONFIG = {
+
+  /* ──────── КОНТАКТНЫЙ EMAIL ──────── */
+  email: 'onlydamnnikitina@gmail.com',
+
+  /* ──────── ПОРТФОЛИО (ВЕРХНЯЯ КАРУСЕЛЬ) ──────── 
+     Здесь 9 карточек для первой ленты. 
+     Меняйте img, label и title под себя. */
+  portfolioTop: [
+    { img: 'videos/1 (1).mp4', label: 'карточка 1', title: 'название' },
+    { img: 'images/1 (2).jpg', label: 'карточка 2', title: 'название' },
+    { img: 'images/1 (3).jpg', label: 'карточка 3', title: 'название' },
+    { img: 'images/1 (4).jpg', label: 'карточка 4', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 5', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 6', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 7', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 8', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 9', title: 'название' },
+  ],
+
+  /* ──────── ПОРТФОЛИО (НИЖНЯЯ КАРУСЕЛЬ) ──────── 
+     Здесь 9 карточек для второй ленты. 
+     Сюда можно вставить совершенно другие картинки. */
+  portfolioBottom: [
+    { img: 'images/1 (3).jpg', label: 'карточка 1', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 2', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 3', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 4', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 5', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 6', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 7', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 8', title: 'название' },
+    { img: 'images/Photo 1.png', label: 'карточка 9', title: 'название' },
+  ],
+
+  /* ──────── ПАРАЛЛАКС HERO ──────── */
+  parallax: true,
 };
-$('#year').textContent = new Date().getFullYear();
 
-const nav = $('#nav'), menuToggle = $('#menuToggle');
-menuToggle.addEventListener('click', () => {
-  const opened = nav.classList.toggle('open');
-  menuToggle.setAttribute('aria-expanded', String(opened));
-  menuToggle.textContent = opened ? '×' : '☰';
-});
-$$('.nav a').forEach(link => link.addEventListener('click', () => {
-  $$('.nav a').forEach(item=>item.classList.remove('active'));
-  link.classList.add('active'); nav.classList.remove('open');
-  menuToggle.setAttribute('aria-expanded','false'); menuToggle.textContent='☰';
-}));
-const sections = ['top','portfolio','about','services','contacts'];
-const slides = [
-  {title:'3D модели и текстуры', bg:'#f8e9e9'},
-  {title:'Материалы и свет', bg:'#f7e5ec'},
-  {title:'Digital objects', bg:'#f2e8eb'},
-  {title:'Candy world', bg:'#fae3eb'},
-  {title:'Создаём новое', bg:'#f8e9e9'}
-];
-let currentSlide=0;
-function setSlide(next){
-  currentSlide=(next+slides.length)%slides.length;
-  $('#slideNumber').textContent=String(currentSlide+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
-  // Меняем только декоративный оттенок сцены, основной контент остаётся доступен.
-  $('.hero').style.setProperty('--slide-tint',slides[currentSlide].bg);
-  $('.hero').style.backgroundColor=slides[currentSlide].bg;
-  toast('Слайд '+(currentSlide+1)+': '+slides[currentSlide].title);
-}
-$('#prevSlide').addEventListener('click',()=>setSlide(currentSlide-1));
-$('#nextSlide').addEventListener('click',()=>setSlide(currentSlide+1));
 
-$$('[data-project]').forEach(card=>card.addEventListener('click',()=>{
-  toast(card.dataset.project);
-}));
-$$('[data-action="like"]').forEach(btn=>btn.addEventListener('click',()=>{
-  const liked=btn.dataset.liked==='true';
-  btn.dataset.liked=String(!liked);
-  const heart=$('b',btn); heart.textContent=liked?'♥':'♥'; heart.style.color=liked?'#ee7fa8':'#c12d65';
-  toast(liked?'Лайк убран':'Спасибо за лайк! ♥');
-}));
-$$('[data-action="instagram"]').forEach(btn=>btn.addEventListener('click',()=>{
-  // Замените URL на ссылку своего профиля.
-  window.open('https://www.instagram.com/','_blank','noopener,noreferrer');
-}));
-$$('[data-action="telegram"]').forEach(btn=>btn.addEventListener('click',()=>{
-  // Замените username в ссылке на свой Telegram.
-  window.open('https://t.me/','_blank','noopener,noreferrer');
-}));
+/* ══════════════════════════════════════════════════════════════════
+   ⚙️  ДАЛЬШЕ ИДЁТ ЛОГИКА — трогать не нужно
+   ══════════════════════════════════════════════════════════════════ */
 
-const editToggle=$('#editToggle');
-let editMode=false;
-editToggle.addEventListener('click',()=>{
-  editMode=!editMode;
-  document.body.classList.toggle('edit-mode',editMode);
-  editToggle.setAttribute('aria-pressed',String(editMode));
-  editToggle.textContent=editMode?'✓ Готово':'✎ Редактировать';
-  $$('[data-editable="true"]').forEach(el=>{
-    el.contentEditable=String(editMode);
-    el.spellcheck=editMode;
+/* Утилиты */
+const $  = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+let toastTimer;
+const toast = (msg) => {
+  const el = $('#toast');
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2600);
+};
+
+/* Год в подвале */
+const yearEl = $('#year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+
+/* ──────── МЕНЮ ──────── */
+const nav = $('#nav');
+const menuToggle = $('#menuToggle');
+
+if (menuToggle && nav) {
+  menuToggle.addEventListener('click', () => {
+    const opened = nav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(opened));
+    menuToggle.textContent = opened ? '×' : '☰';
   });
-  toast(editMode?'Режим редактирования включён — нажимайте на текст':'Редактирование завершено');
+}
+
+$$('.nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    $$('.nav a').forEach(a => a.classList.remove('active'));
+    link.classList.add('active');
+    if (nav) nav.classList.remove('open');
+    if (menuToggle) {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    }
+  });
 });
 
-$('#contactForm').addEventListener('submit',event=>{
-  event.preventDefault();
-  const data=new FormData(event.currentTarget);
-  const subject=encodeURIComponent('Новый проект — '+data.get('name'));
-  const body=encodeURIComponent('Имя: '+data.get('name')+'\nEmail: '+data.get('email')+'\n\nПроект:\n'+data.get('message'));
-  window.location.href='mailto:hello@almondcream.studio?subject='+subject+'&body='+body;
-  toast('Открываем почтовое приложение…');
+
+/* ──────── КАРУСЕЛИ ────────
+   Строит DOM-структуру карточек из CONFIG.portfolioTop / portfolioBottom.
+   Поддерживает картинки (png, jpg, gif) и видео (mp4, webm). */
+function buildSlider(el, items) {
+  if (!el || !items.length) return;
+  el.style.setProperty('--quantity', items.length);
+
+  const list = document.createElement('div');
+  list.className = 'list';
+
+  items.forEach((item, i) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'item';
+    wrap.style.setProperty('--position', i + 1); // фаза анимации
+
+    // Проверяем, является ли файл видео по его расширению
+    const isVideo = /\.(mp4|webm|ogg)$/i.test(item.img);
+
+    // Если это видео — создаем тег video, иначе — img
+    const mediaTag = isVideo 
+      ? `<video src="${item.img}" autoplay muted loop playsinline></video>` 
+      : `<img src="${item.img}" alt="${item.label || item.title || ''}">`;
+
+    wrap.innerHTML = `
+      <div class="card">
+        ${mediaTag}
+        <div class="card-text">
+          <p>${item.label || ''}</p>
+          <p>${item.title || ''}</p>
+        </div>
+      </div>`;
+    list.appendChild(wrap);
+  });
+
+  el.appendChild(list);
+}
+
+buildSlider($('#sliderRight'), CONFIG.portfolioTop);
+buildSlider($('#sliderLeft'),  CONFIG.portfolioBottom);
+
+
+/* ──────── ЛАЙК ──────── */
+$$('[data-action="like"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const liked = btn.dataset.liked === 'true';
+    btn.dataset.liked = String(!liked);
+    const heart = $('b', btn);
+    if (heart) heart.style.color = liked ? '#ee7fa8' : '#c12d65';
+    toast(liked ? 'Лайк убран' : 'Спасибо за лайк! ♥');
+  });
 });
 
 
-/* =========================================================
-   MOTION / SHOWREEL BEHAVIOUR
-   - Parallax очень лёгкий и ограничен сценой hero, чтобы не залезать на текст.
-   - Видео воспроизводятся без звука, зацикленно; если файла пока нет, остаётся постер-заглушка.
-   ========================================================= */
+/* ──────── ФОРМА (mailto) ──────── */
+const contactForm = $('#contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(contactForm);
+
+    const subject = encodeURIComponent('Новый проект — ' + data.get('name'));
+    const body = encodeURIComponent(
+      'Имя: '   + data.get('name')  + '\n' +
+      'Email: ' + data.get('email') + '\n\n' +
+      'Проект:\n' + data.get('message')
+    );
+
+    window.location.href = `mailto:${CONFIG.email}?subject=${subject}&body=${body}`;
+    toast('Открываем почтовое приложение…');
+  });
+}
+
+
+/* ──────── ПАРАЛЛАКС HERO ──────── */
 const hero = $('.hero');
 const floatObjects = $$('.heart-glass, .star-ball, .gem, .like-bubble, .ribbon');
 let scrollTick = false;
-function updateHeroParallax(){
-  if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+function updateHeroParallax() {
+  if (!CONFIG.parallax) return;
+  if (!hero) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   const rect = hero.getBoundingClientRect();
-  const progress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
-  // Движение небольшое и не влияет на положение текста и навигации.
-  floatObjects.forEach((el, index)=>{
-    const speed = 7 + (index % 4) * 3;
-    el.style.setProperty('--scroll-drift', `${Math.round(progress * speed)}px`);
+  const progress = Math.max(0, Math.min(1,
+    (window.innerHeight - rect.top) / (window.innerHeight + rect.height)
+  ));
+
+  floatObjects.forEach((el, i) => {
+    const speed = 7 + (i % 4) * 3;
+    el.style.setProperty('--scroll-drift', Math.round(progress * speed) + 'px');
   });
   scrollTick = false;
 }
-window.addEventListener('scroll', ()=>{
-  if (!scrollTick) { window.requestAnimationFrame(updateHeroParallax); scrollTick = true; }
-}, {passive:true});
+
+window.addEventListener('scroll', () => {
+  if (!scrollTick) {
+    requestAnimationFrame(updateHeroParallax);
+    scrollTick = true;
+  }
+}, { passive: true });
 window.addEventListener('resize', updateHeroParallax);
 updateHeroParallax();
 
-$$('.showreel-card video').forEach(video=>{
+
+/* ──────── ВИДЕО ШОУРИЛОВ ──────── */
+$$('.showreel-card video').forEach(video => {
   video.muted = true;
   video.loop = true;
   video.playsInline = true;
-  video.addEventListener('loadeddata',()=>{
-    const card=video.closest('.showreel-card');
-    card.classList.add('has-video');
-    video.play().catch(()=>{ /* Некоторые браузеры ждут первого действия пользователя. */ });
+
+  video.addEventListener('loadeddata', () => {
+    video.closest('.showreel-card')?.classList.add('has-video');
+    video.play().catch(() => {});
   });
-  video.addEventListener('error',()=>{
-    // Пока файла нет, показываем аккуратную графическую заглушку.
-    video.closest('.showreel-card').classList.remove('has-video');
+
+  video.addEventListener('error', () => {
+    video.closest('.showreel-card')?.classList.remove('has-video');
   });
-  // Повторная попытка запуска при первом касании/клике на устройстве.
-  document.addEventListener('pointerdown',()=>{ if(video.readyState>=2) video.play().catch(()=>{}); },{once:true,passive:true});
+
+  document.addEventListener('pointerdown', () => {
+    if (video.readyState >= 2) video.play().catch(() => {});
+  }, { once: true, passive: true });
+});
+
+/* ══════════════════════════════════════════════════════════════════
+   3D ПАРАЛЛАКС КАРТОЧКА
+   ══════════════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. НАСТРОЙКИ СЛОЕВ
+    const LAYER_SETTINGS = {
+        'bg':           { x: 0, y: 0, scale: 0, depth: -50, radius: 20, blur: 2, opacity: 1, clip: true },
+        'chains-back':  { x: 0, y: 0, scale: 1.3,    depth: 10,  radius: 20, blur: 0, opacity: 1, clip: true },
+        'hand':         { x: 0, y: 0, scale: 0.7,  depth: 50,  radius: 20, blur: 0, opacity: 1, clip: true },
+        'card-frame':   { x: 0, y: 0, scale: 1,    depth: 100,  radius: 20, blur: 0, opacity: 1, clip: true },
+        'chains-front': { x: 0, y: 30, scale: 0.6,  depth: 150, radius: 20, blur: 0, opacity: 1, clip: true}
+    };
+
+    // 2. ПРИМЕНЕНИЕ НАСТРОЕК
+    const wrappers = document.querySelectorAll('.layer-wrapper');
+    wrappers.forEach(wrapper => {
+        const layerName = wrapper.dataset.layer;
+        const settings = LAYER_SETTINGS[layerName];
+        if (!settings) return; 
+
+        const img = wrapper.querySelector('img');
+        wrapper.style.transform = `translate(${settings.x}%, ${settings.y}%) scale(${settings.scale})`;
+        img.style.transform = `translateZ(${settings.depth}px)`;
+        img.style.filter = `blur(${settings.blur}px)`;
+        img.style.opacity = settings.opacity;
+
+        if (settings.clip) {
+            img.style.clipPath = `inset(0 round ${settings.radius}px)`;
+        } else {
+            img.style.clipPath = 'none';
+        }
+    });
+
+    // 3. ЭФФЕКТ НАКЛОНА
+    const scene = document.getElementById('scene');
+    const card = document.getElementById('card');
+    
+    if (scene && card) {
+        const MAX_ROTATE = 15; 
+        
+        let currentX = 0, currentY = 0;
+        let targetX = 0, targetY = 0;
+
+        // --- ПК (Мышка) ---
+        // Слушаем движение мышки по ВСЕМУ ОКНУ, чтобы увеличить радиус действия
+        window.addEventListener('mousemove', (e) => {
+            // Вычисляем позицию мышки относительно центра экрана
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+            
+            targetX = y * -MAX_ROTATE;
+            targetY = x * MAX_ROTATE;
+        });
+
+        // --- ТЕЛЕФОН (Палец) ---
+        // Слушаем касания по всей ширине окна, чтобы было удобно водить пальцем
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                const touch = e.touches[0]; 
+                const x = (touch.clientX / window.innerWidth) - 0.5;
+                const y = (touch.clientY / window.innerHeight) - 0.5;
+                
+                targetX = y * -MAX_ROTATE;
+                targetY = x * MAX_ROTATE;
+            }
+        }, { passive: true });
+
+        // Возврат в исходное положение, когда мышка или палец уходят
+        window.addEventListener('mouseleave', () => {
+            targetX = 0;
+            targetY = 0;
+        });
+        
+        window.addEventListener('touchend', () => {
+            targetX = 0;
+            targetY = 0;
+        });
+
+        // --- АНИМАЦИЯ (с инерцией) ---
+        function animate() {
+            // Плавно догоняем цель (0.1 - это скорость догоняния, можно менять)
+            currentX += (targetX - currentX) * 0.1;
+            currentY += (targetY - currentY) * 0.1;
+
+            card.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+            
+            requestAnimationFrame(animate);
+        }
+        animate(); 
+    }
 });
