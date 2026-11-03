@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Прайс-лист — DYANCHIK</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="price.css">
+  
+  <style>
+    @font-face {
+      font-family: "MyFont";
+      src: url("fonts/MyFont.woff") format("woff");
+    }
+    @font-face {
+      font-family: "ContactFont";
+      src: url("fonts/ContactFont.woff") format("woff");
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ШАПКА -->
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="DYANCHIK — на главную">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="images/logo.png" alt="">
+      </span>
+      <span>
+        <span class="brand-name">DYANCHIK</span>
+        <span class="brand-sub">3D designer portfolio</span>
+      </span>
+    </a>
+
+    <!-- ДОБАВЛЕНО: Кнопка меню для телефонов -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">☰</button>
+
+    <!-- ДОБАВЛЕНО: id="nav" для работы скрипта -->
+    <nav class="nav" id="nav" aria-label="Главная навигация">
+      <a href="index.html#top">Главная</a>
+      <a href="index.html#about">Обо мне</a>
+      <a href="index.html#services">Что я могу</a>
+      <a href="index.html#showreels">Шоурилы</a>
+      <a href="index.html#portfolio">Портфолио</a>
+      <a href="price.html" class="active">Прайс</a>
+      <a href="index.html#contacts">Контакты</a>
+    </nav>
+
+    <!-- Соцсети -->
+    <div class="socials">
+      <a href="https://t.me/dyanchik_n" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Telegram" title="Telegram">
+        <svg viewBox="0 0 24 24"><path d="M21.5 3.5 18.3 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.6.6-1.2.6l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L5.5 13.6.6 12.1c-1.1-.3-1.1-1 .2-1.5L19.8 3c.9-.3 1.7.2 1.7.5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dyanchik_n" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok" title="TikTok">
+        <svg viewBox="0 0 35 35"><path d="M16.708 0.027c1.745-0.027 3.48-0.011 5.213-0.027 0.105 2.041 0.839 4.12 2.333 5.563 1.491 1.479 3.6 2.156 5.652 2.385v5.369c-1.923-0.063-3.855-0.463-5.6-1.291-0.76-0.344-1.468-0.787-2.161-1.24-0.009 3.896 0.016 7.787-0.025 11.667-0.104 1.864-0.719 3.719-1.803 5.255-1.744 2.557-4.771 4.224-7.88 4.276-1.907 0.109-3.812-0.411-5.437-1.369-2.693-1.588-4.588-4.495-4.864-7.615-0.032-0.667-0.043-1.333-0.016-1.984 0.24-2.537 1.495-4.964 3.443-6.615 2.208-1.923 5.301-2.839 8.197-2.297 0.027 1.975-0.052 3.948-0.052 5.923-1.323-0.428-2.869-0.308-4.025 0.495-0.844 0.547-1.485 1.385-1.819 2.333-0.276 0.676-0.197 1.427-0.181 2.145 0.317 2.188 2.421 4.027 4.667 3.828 1.489-0.016 2.916-0.88 3.692-2.145 0.251-0.443 0.532-0.896 0.547-1.417 0.131-2.385 0.079-4.76 0.095-7.145 0.011-5.375-0.016-10.735 0.025-16.093z"/></svg>
+      </a>
+      <a href="https://vk.com/alonenikitoska" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="VK" title="VK">
+        <svg viewBox="0 0 24 24"><path d="M3 7h4c.3 3.8 1.8 5.4 3 5.8V7h3.8v3.3c1.3-.2 2.6-1.7 3.1-3.3H21c-.4 2.1-2.2 4-3.4 4.8 1.2.7 3.3 2.4 4 5.2h-4.4c-.6-1.7-1.9-3-3.4-3.3V17H12C6.5 17 3.1 13.2 3 7Z"/></svg>
+      </a>
+      <a href="https://max.ru/u/f9LHodD0cOJGkJtUxGqTu16d-jO1-SUYrWo7AyblxqcBwG9yn66MQchOFgA" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="MAX" title="MAX">
+        <svg viewBox="0 0 720 720"><path fill="#0a0b0b" d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <h1>Прайс-лист</h1>
+      <p>Выберите категорию, чтобы посмотреть полный список услуг и цены.<br><small>* В скобках указана цена для своих (50%).</small></p>
+    </div>
+
+    <!-- АККОРДЕОН КАТЕГОРИЙ -->
+    <div class="accordion-group">
+
+      <details class="accordion" open>
+        <summary>
+          <span class="num">01 / MODELING</span>
+          <h2>3D-моделирование и текстуры</h2>
+        </summary>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="card-media"><div class="media-placeholder">Фото/Видео</div></div>
+            <div class="card-content">
+              <h3>Простой пропс</h3>
+              <p>Создам 3D-модель простого предмета (кружка, коробка, инструмент). Готова к рендеру или анимации.</p>
+              <div class="price">
+                <span class="price-val">2 000 – 4 000 ₽</span>
+                <small>(1 000 – 2 000 ₽)</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="card-media"><div class="media-placeholder">Фото/Видео</div></div>
+            <div class="card-content">
+              <h3>Пропс средней сложности</h3>
+              <p>Более детальная модель предмета — с фасками, креплениями, мелкими элементами. Выглядит реалистично крупным планом.</p>
+              <div class="price">
+                <span class="price-val">4 000 – 8 000 ₽</span>
+                <small>(2 000 – 4 000 ₽)</small>
+              </div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="card-media"><div class="media-placeholder">Фото/Видео</div></div>
+            <div class="card-content">
+              <h3>Сложный пропс / техника</h3>
+              <p>Сложная 3D-модель техники или многосоставного объекта. С деталями и крепежом — для рендера или анимации.</p>
+              <div class="price">
+                <span class="price-val">8 000 – 15 000 ₽</span>
+                <small>(4 000 – 7 500 ₽)</small>
+              </div>
+            </div>
+          </article>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>
+          <span class="num">02 / MOTION</span>
+          <h2>Моушен</h2>
+        </summary>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="card-media"><div class="media-placeholder">Фото/Видео</div></div>
+            <div class="card-content">
+              <h3>Turntable (вращение объекта)</h3>
+              <p>Короткое видео, где ваш продукт красиво вращается. Идеально для сайта или соцсетей.</p>
+              <div class="price">
+                <span class="price-val">3 000 – 6 000 ₽</span>
+                <small>(1 500 – 3 000 ₽)</small>
+              </div>
+            </div>
+          </article>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>
+          <span class="num">03 / BRANDED</span>
+          <h2>Брендированные ролики</h2>
+        </summary>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="card-media"><div class="media-placeholder">Фото/Видео</div></div>
+            <div class="card-content">
+              <h3>Короткий ролик (до 15 сек)</h3>
+              <p>Короткий рекламный ролик бренда или продукта. 1–2 сцены, графика и базовый звук.</p>
+              <div class="price"><span class="price-val">20 000 – 35 000 ₽</span><small>(10 000 – 17 500 ₽)</small></div>
+            </div>
+          </article>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>
+          <span class="num">04 / CHARACTERS</span>
+          <h2>Персонажи / маскоты</h2>
+        </summary>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="card-media"><div class="media-placeholder">Фото/Видео</div></div>
+            <div class="card-content">
+              <h3>Маскот простой (без рига)</h3>
+              <p>Создам 3D-персонажа по вашей картинке. Пока без анимации — просто красивую объёмную фигурку.</p>
+              <div class="price"><span class="price-val">10 000 – 18 000 ₽</span><small>(5 000 – 9 000 ₽)</small></div>
+            </div>
+          </article>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>
+          <span class="num">05 / VFX</span>
+          <h2>VFX и композитинг</h2>
+        </summary>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="card-media"><div class="media-placeholder">Фото/Видео</div></div>
+            <div class="card-content">
+              <h3>Интеграция 3D-объекта в видео</h3>
+              <p>Вставлю 3D-объект в ваше видео так, будто он там был. С правильным светом и тенями.</p>
+              <div class="price"><span class="price-val">8 000 – 20 000 ₽</span><small>(4 000 – 10 000 ₽)</small></div>
+            </div>
+          </article>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>
+          <span class="num">06 / SERVICE</span>
+          <h2>Сервис</h2>
+        </summary>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="card-media"><div class="media-placeholder">Фото/Видео</div></div>
+            <div class="card-content">
+              <h3>Консультация / разбор ТЗ</h3>
+              <p>Помогу оценить задачу, сроки и подскажу, как лучше сделать. 30 минут.</p>
+              <div class="price"><span class="price-val">1 000 – 2 000 ₽</span><small>(500 – 1 000 ₽)</small></div>
+            </div>
+          </article>
+        </div>
+      </details>
+
+    </div>
+  </main>
+
+  <!-- ПОДВАЛ -->
+  <footer class="footer">
+    <span>© <span id="year"></span> DYANCHIK</span>
+    <span>Made by myself</span>
+  </footer>
+
+  <!-- СКРИПТЫ -->
+  <script>
+    // 1. Год в подвале
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 2. Логика открытия мобильного меню
+    const menuBtn = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('nav');
+    
+    if (menuBtn && navMenu) {
+      menuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        menuBtn.textContent = navMenu.classList.contains('open') ? '×' : '☰';
+      });
+    }
+  </script>
+</body>
+</html>
